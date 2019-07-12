@@ -1,0 +1,58 @@
+{% extends "staff_base.html" %}
+{% block body %}
+<!-- Is it possible to put this into staff base ?-->
+<br>
+<h1 style="text-align: center">Search Current Orders</h1>
+
+<!-- Search Form -->
+<form action="{{url_for('deletedOrders')}}" method="get">
+
+<div class="container">
+
+    <h2><input type="number" name="search_str" placeholder="Search Order ID">
+
+    <button>Search</button></h2>
+</div>
+
+</form>
+
+<h1 style="text-align: center"> Deleted Orders: {{ del_orders |length}} deleted orders</h1>
+<table align="center">
+    <tr>
+        <th>Order ID</th>
+        <th>Ingredients</th>
+        <th>Price</th>
+        <th>Status</th>
+        <th>Set Status</th>
+        <th>Delete Order</th>
+    </tr>
+    {% for order in del_orders %}
+    <tr>
+        <td>{{order.ID}}</td>
+        <td>
+            <ul>
+                <li>Mains: {{order.mains}}</li>
+                <li>Sides: {{order.sides}}</li>
+                <li>Drinks: {{order.drinks}}</li>
+            </ul>
+        <td>{{order.calculate_order_price(inventory1)}}</td>
+        <td>{{order.status}}</td>
+        <td><form method="post">
+            <input hidden name="id", value="{{ order.ID }}">
+            <!-- select drop down box -->
+            Set Status: <select name="order_status">
+                <option value="Preparing">Preparing</option>
+                <option value="Ready for collection">Ready for Collection</option>
+                <option value="Collected">Collected</option>
+            </select>
+            <button name='update_status' value='update'>Update Status</button>
+        </td>
+        <td>
+            <button name='update_status' value='delete'>Delete Order</button>
+        </td>  
+    </tr>
+    {% endfor %}
+</table>
+        <button name='update_status' value='clear'>Clear List</button>
+    </form>
+{% endblock %}

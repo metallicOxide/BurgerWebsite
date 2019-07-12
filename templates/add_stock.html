@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+{% block body %}
+<center>
+    <div>
+        <h2> Add a new stock type </h2>
+    </div>
+    <br/>
+
+    <div>
+        <form method="POST">
+            {% if errors %}
+                <label>Item Name:</label><input name='name' value='{{name}}'/> <br>
+                {% if 'name' in errors%}
+                    <div class="error">
+                        <font size="3" color="red">{{errors['name']}}</font>
+                    </div>
+                {% endif %}
+                <label>Classification:</label>
+                <select name='classification'>
+                    <option value=''>Select a class...</option>
+                    <option value='bun'>Bun</option>
+                    <option value='patty'>Patty</option>
+                    <option value='main'>Main</option>
+                    <option value='side'>Side</option>
+                    <option value='drink'>Drink</option>
+                </select><br>
+                {% if 'classification' in errors%}
+                    <div class="error">
+                        <font size="3" color="red">{{errors['classification']}}</font>
+                    </div>
+                {% endif %}
+                <label>Price:</label>
+                <input type='number' step='0.01' min='0' name='price' value='{{price}}'/> <br>
+                {% if 'price' in errors%}
+                    <div class="error">
+                        <font size="3" color="red">{{errors['price']}}</font>
+                    </div>
+                {% endif %}
+                <label>Quantity:</label>
+                <input type='number' step='1' min='1' name='amount' value= '{{amount}}'/> <br>
+                {% if 'amount' in errors%}
+                    <div class="error">
+                        <font size="3" color="red">{{errors['amount']}}</font>
+                    </div>
+                {% endif %}
+                <label>Stock size (quantity per item):</label>
+                <input type='number' step='1' min='1' name='ingredient_size' value='{{ingredient_size}}'/> <br>
+                {% if 'ingredient_size' in errors%}
+                    <div class="error">
+                        <font size="3" color="red">{{errors['ingredient_size']}}</font>
+                    </div>
+                {% endif %}
+                <label>Max Allowed per Order (leave blank if no limit):</label>
+                <input type='number' step='1' min='1' name='max_allow' value='{{max_allow}}'/> <br>
+                {% if 'max_allow' in errors%}
+                    <div class="error">
+                        <font size="3" color="red">{{errors['max_allow']}}</font>
+                    </div>
+                {% endif %}
+                <label>Quantity Type (leave blank if discrete):</label><input name=quant_type value='{{quant_type}}'/> <br>
+                <button name='submit' type="submit" value='confirm'>Confirm</button>
+                <button name='submit' type="submit" value='cancel'>Cancel</button>
+            {% else %}
+                <label>Item Name:</label><input name='name' placeholder='Item name...' /> <br>
+                <label>Classification:</label>
+                <select name='classification'>
+                    <option value=''>Select a class...</option>
+                    <option value='bun'>Bun</option>
+                    <option value='patty'>Patty</option>
+                    <option value='main'>Main</option>
+                    <option value='side'>Side</option>
+                    <option value='drink'>Drink</option>
+                </select><br>
+                <label>Price:</label>
+                <input type='number' step='0.01' min='0' name='price' placeholder='Price...' /> <br>
+                <label>Quantity:</label>
+                <input type='number' step='1' min='1' name='amount' placeholder='Quantity adding...' /> <br>
+                <label>Stock size (quantity per item):</label>
+                <input type='number' step='1' min='1' name='ingredient_size' placeholder='Stock size...' /> <br>
+                <label>Max Allowed per Order (leave blank if no limit):</label>
+                <input type='number' step='1' min='1' name='max_allow' placeholder='Max allowed...' /> <br>
+                <label>Quantity Type (leave blank if discrete):</label>
+                <input name=quant_type placeholder='Quantity type...' /> <br>
+                <button name='submit' type="submit" value='confirm'>Confirm</button>
+                <button name='submit' type="submit" value='cancel'>Cancel</button>
+            {% endif %}
+        </form>
+    </div>
+</center>
+{% endblock %}

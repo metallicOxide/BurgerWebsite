@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+<head>
+    <title>Gourmet Burgers</title>
+    <link rel="shortcut icon" type="image/x-icon" href="icons/favicon.ico">
+    
+</head>
+
+
+{% block body %}
+<div class="jumbotron jumbotron-fluid">
+    <div class="container" style="text-align: center">
+      <h1 class="display-4">Welcome to Gourmet Burgers</h1>
+      <p class="lead">Begin your order by selecting your main, sides or drinks</p>
+    </div>
+
+</div>
+
+<div class="container-fluid">
+    <div class = "row top-buffer"></div>
+    <br>
+    <div class="row" style="text-align: center">
+      <div class="col-sm-2"></div>
+      <div class="col-sm-3" id="images">
+        <img src="{{url_for('static', filename='mains.png')}}">   
+        <br><br>
+        <a href="{{url_for('mains')}}">Mains</a>
+      </div>
+      <div class="col-sm-2" id="images">
+        <img src="{{url_for('static', filename='fried-potatoes.png')}}">
+        <br><br>
+        <a href="{{url_for('sides')}}">Sides</a>
+      </div>
+      <div class="col-sm-3" id="images">
+          <img src="{{url_for('static', filename='cheers.png')}}">   
+          <br><br>
+        <a href="{{url_for('drinks')}}">Drinks</a>
+      </div>
+      <div class="col-sm-2"></div>
+    </div>
+  </div>
+
+{% endblock %}

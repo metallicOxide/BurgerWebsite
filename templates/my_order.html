@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en" dir = "ltr">
+
+<head>
+    <!-- Meta Tags-->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Offline Boostrap-->
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <!-- Icons Fontawesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+
+    <title>Gourmet Burgers</title>
+    <link rel="shortcut icon" type="image/x-icon" href="icons/favicon.ico">
+
+    <!-- CSS -->
+    <style>
+        /* Add a black background color to the top navigation */
+        .topnav {
+            height: 100px;
+            padding: 0 20px;
+            background-color:whitesmoke;
+            overflow: hidden;
+            font-family: "montserrat", sans-serif;
+            text-transform: uppercase;
+        }
+
+        /* Style the links inside the navigation bar */
+        .topnav a {
+          float: left;
+          color: black;
+          text-align: center;
+          padding: 14px 16px;
+          text-decoration: none;
+          font-size: 14px;
+        }
+
+        /* Change the color of links on hover */
+        .topnav a:hover {
+          background-color: #ddd;
+          color: black;
+        }
+
+        /* Add a color to the active/current link */
+        .topnav a.active {
+          color: rgb(24, 23, 23);
+        }
+        .logo{
+            line-height: 75px;
+            float: left;
+        }
+        .navBar{
+          float: right;
+          line-height: 50px;
+          padding: 0 15px;
+        }
+
+    </style>
+</head>
+
+<body>
+  <!-- Tab Menu -->
+  <div class="container-fluid">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="{{url_for('home')}}">Gourmet Burgers</a>
+
+      <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarSupportedContent">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="{{url_for('home')}}">Home</a>
+          </ul>
+      </div>
+    </nav>
+  </div>
+
+
+<h2>Here is your order</h2><br>
+
+<h4>Your order number is {{ID}}</h4>
+
+{% for items in order.mains %}
+    <table class = "table table-hover text-center">
+        <h5> {{"Main number: {0}".format(loop.index)}} </h3>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Quantity</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for ingredient in items.ingredients %}
+                {% set food = inventory.get_ingredient(ingredient) %}
+                <tr>
+                    <td>{{food.name}}</td>
+                    <td>{{food.price}}</td>
+                    <td>{{items.ingredients[ingredient]}}</td>   
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endfor %}
+
+<table class = "table table-hover text-center">
+    <h5>Sides Order</h3>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Quantity</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for key in order.sides.ingredients %}
+            {% set food = inventory.get_ingredient(key) %}
+            <tr>
+                <td>{{food.name}}</td>
+                <td>{{food.price}}</td>
+                <td>{{order.sides.ingredients[key]}}</td>   
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<table class = "table table-hover text-center">
+    <h5>Drinks Order</h3>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Quantity</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for key in order.drinks.ingredients %}
+            {% set food = inventory.get_ingredient(key) %}
+            <tr>
+                <td>{{food.name}}</td>
+                <td>{{food.price}}</td>
+                <td>{{order.drinks.ingredients[key]}}</td>   
+            </tr>
+        {% endfor %}
+    </tbody>
+</table> 
+
+<button><a href="{{url_for('home')}}">Return home</a></button>
+
+
+

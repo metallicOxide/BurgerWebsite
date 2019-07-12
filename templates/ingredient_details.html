@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block body %}
+<a href="{{url_for('manage_inventory')}}">Back to inventory</a>
+
+<center>
+    <h2> Ingredient Details </h2> <br>
+    <img src="https://cdn.downtoearth.org.in/library/large/2019-03-05/0.89399200_1551782137_fast1.jpg" width="450px" height="300px"/>
+    <br>
+    <h3> {{ingredient.name}} </h3>
+    Quantity: {{quant}} <br>
+    Ingredient size: {{ingredient.ingredient_size}} <br>
+    Quantity Type: {{ingredient.quant_type}} <br>
+    Price: {{ingredient.price}} <br>
+    <form method="POST">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm">
+                    <button name='submit' type="submit" value='remove'>Delete Item</button>
+                </div>
+                <div class="col-sm">
+                    <input type='number' step='1' min='1' name='amount' placeholder='Add quantity...'/> <br>
+                    {% if error %}
+                        <div class="error">
+                            <font size="3" color="red">{{error}}</font>
+                        </div>
+                    {% endif %}
+                    <button name='submit' type="submit" value='update'>Update Stock</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</center>
+{% endblock %}

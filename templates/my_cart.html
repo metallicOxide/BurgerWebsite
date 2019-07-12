@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+{% block body %}
+<br><br>
+<h2 style="text-align: center">Welcome to your cart</h2><br>
+<br>
+{% for items in order[0] %}
+    <table class = "table table-hover text-center">
+        <h5> {{"Main number: {0}".format(loop.index)}} </h3>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Quantity</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for ingredient in items %}
+                {% set food = inventory.get_ingredient(ingredient) %}
+                <tr>
+                    <td>{{food.name}}</td>
+                    <td>{{food.price}}</td>
+                    <td>{{items[ingredient]}}</td>   
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endfor %}
+
+<table class = "table table-hover text-center">
+    <h5>Sides Order</h3>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Quantity</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for ingredient in order[1] %}
+            {% set food = inventory.get_ingredient(ingredient) %}
+            <tr>
+                <td>{{food.name}}</td>
+                <td>{{food.price}}</td>
+                <td>{{order[1][ingredient]}}</td>   
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<table class = "table table-hover text-center">
+        <h5>Drinks Order</h3>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Quantity</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for ingredient in order[2] %}
+                {% set food = inventory.get_ingredient(ingredient) %}
+                <tr>
+                    <td>{{food.name}}</td>
+                    <td>{{food.price}}</td>
+                    <td>{{order[2][ingredient]}}</td>   
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+{% if error %}
+    {{error}}
+{% endif %}
+
+{% if price %}
+    <h6>total price is: {{price}}</h6><br>
+{% endif %}
+<form method = "POST">
+    <button>CHECKOUT!</button><br><br>
+    <input name ="Cancel Order" type ="submit" value = "Cancel">
+</form>
+
+
+{% endblock %}

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="60px" height="60px" viewBox="0 0 60 60" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.2.2 (9983) - http://www.bohemiancoding.com/sketch -->
+    <title>Fries</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="stroked" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="Kitchen" sketch:type="MSLayerGroup" transform="translate(-127.000000, -118.000000)" stroke="#535353" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <g id="Fries" transform="translate(138.000000, 122.000000)" sketch:type="MSShapeGroup">
+                <path d="M10.2992915,16 L1,16 L6,54 L33,54 L38,16 L28.7007085,16 C28.8960866,16.3680472 29,16.7538975 29,17.1515152 C29,19.6953722 24.7467051,21.7575758 19.5,21.7575758 C14.2532949,21.7575758 10,19.6953722 10,17.1515152 C10,16.7538975 10.1039134,16.3680472 10.2992915,16 Z" id="Rectangle-676"></path>
+                <path d="M13.8478186,16.6113473 L10.4149769,3.79980782 L15.2446061,2.50571259 L18.1359182,16.7746697" id="Rectangle-677"></path>
+                <path d="M26.5949749,14.7153237 L25.4813115,2.97287061 L20.9258697,1.73442851 L22.455463,16.4576245" id="Rectangle-678"></path>
+                <path d="M29.8878273,12.9370068 L30.6358936,0.709134286 L34.4095746,1.28729654 L33.8602456,13.0501154" id="Path-1375"></path>
+                <path d="M8.63192437,13.4970387 L4.45385348,1.8199655 L1.24697842,3.16212111 L3.3533224,13.6760829" id="Path-1376"></path>
+                <circle id="Oval-629" cx="19.5" cy="34.5" r="4.5"></circle>
+            </g>
+        </g>
+    </g>
+</svg>

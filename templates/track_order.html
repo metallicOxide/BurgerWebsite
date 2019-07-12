@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% block body %}
+<br>
+
+<h1 style = "text-align: center">Track your Order</h1>
+<br><br>
+<!-- Search function -->
+
+<div class="container" align ="center">
+    <form method="POST">
+        
+        <h2><input type="number" name="track_order_search" placeholder="Enter your Order ID" min="0"></h2>
+        {% if errors %}
+        {% if 'Invalid ID' in errors %}
+            <div class="error">
+                <font color="red">{{errors['Invalid ID']}}</font>
+            </div>
+        {% endif %}
+        {% endif %}
+        <button>Search</button>
+        
+    </form>
+</div>
+
+{% if result|length != 0 %}
+
+<h1 style="text-align: center">Thank you for your order </h1><br>
+<table align="center">
+    <tr>
+        <th>Order ID</th>
+        <th>Your Order</th>
+        <th>Price</th>
+        <th>Status</th>
+    </tr>
+    {% for order in result %}
+    <tr>
+        <td>{{order.ID}}</td>
+        <td>
+            <ul>
+                <li>Mains:
+                    {% for i in order.mains %}
+                        {{ i }}
+                    {% endfor %}</li>
+                <li>Sides: {{order.sides}}</li>
+                <li>Drinks: {{order.drinks}}</li>
+            </ul>
+        </td>
+        <td>${{order.calculate_order_price(inventory)}}</td>
+        <td>{{order.status}}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+{% endif %}
+
+
+{% endblock %}

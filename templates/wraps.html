@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block body %}
+
+{% if list %}
+<h2>Create your gourmet wrap</h2>
+    <form method = "POST">
+        <table class = "table table-hover text-center">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for food in list %}
+                {% if food.classification == 'patty' or food.classification == 'main' and food.name != 'Classic Burger' and food.name != 'Classic Wrap' %}
+                    <tr>
+                        <td>{{food.name}}</td>
+                        <td>{{food.price}}</td>
+                        <td>
+                            {% if error %}
+                                {% if ingredients[food.name] %}
+                                    <input type = "number" name = '{{food.name}}' value = "{{ingredients[food.name]}}" min = "0" step ="1">
+                                {% else %}
+                                    <input type = "number" name = '{{food.name}}' value = "0" min = "0" step ="1">
+                                {% endif %}
+                            {%  else %}
+                                <input type = "number" name = '{{food.name}}' value = "0" min = "0" step ="1">
+                            {% endif %}
+                        </td>
+                    </tr>
+                {% endif %}
+            {% endfor %}
+            </tbody>
+        </table>
+
+        {% if error %}
+            {% for key in error %}
+                {{key}} <br>
+            {% endfor %}
+        {% endif %}
+        <button>add to cart</button>
+    </form>
+{% endif %}
+{% endblock %}

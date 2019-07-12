@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block body %}
+<div class = "row top-buffer"></div>
+<div class="container-fluid" id="header">
+    <img id="headimage" src="static/row-of-burgers.jpg"></div>
+</div>
+<br>
+<h2 style = "text-align:center"> Select from our Famous Range </h2>
+<div class="container-fluid">
+    <div class = "row top-buffer"></div>
+    <br><br>
+    <div class="row" style="text-align: center">
+        <div class="col-sm-2"></div>
+        <div class="col-sm-3" id="images">
+            <img src="{{url_for('static', filename='tray.png')}}">
+            <br><br>
+            <a href="{{url_for('premade')}}">Classic Creations</a>
+        </div>
+        <div class="col-sm-2" id="images">
+            <img src="{{url_for('static', filename='burrito.png')}}">
+            <br><br>
+            <a href="{{url_for('wraps')}}">Gourmet Wraps</a>
+        </div>
+        <div class="col-sm-3" id="images">
+            <img src="{{url_for('static', filename='hamburger.png')}}">
+            <br><br>
+            <a href="{{url_for('burgers')}}">Gourmet Burgers</a>
+        </div>
+        <div class="col-sm-2"></div>
+    </div>
+    <br><br>
+</div>
+
+
+{% endblock %}

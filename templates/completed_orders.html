@@ -1,0 +1,84 @@
+{% extends "staff_base.html" %}
+{% block body %}
+<br>
+<h2 style="text-align: center">Search Collected Orders</h2>
+
+<form action="{{url_for('completedOrders')}}" method="get">
+
+<div class="container">
+
+    <h2 style="text-align: center"><input type="number" name="search_str" placeholder="Search Order ID" min='0'></h2>
+    {% if errors %}
+    {% if 'Invalid ID' in errors %}
+        <div class="error">
+            <font color="red">{{errors['Invalid ID']}}</font>
+        </div>
+    {% endif %}
+    {% endif %}
+    <div class ="row">
+        <div class="col-sm-7"></div>
+        <div class="col-sm-1">
+            <button>Search</button>
+        </div>
+        <div class="col-sm-4"></div>
+    </div>
+</div>
+</form>
+
+<br><br>
+<h1 style="text-align: center"> Collected Orders: {{ comp_orders |length}} collected orders</h1>
+<br><br>
+{% if comp_orders|length != 0 %}
+<table align="center">
+    <tr>
+        <th>Order ID</th>
+        <th>Ingredients</th>
+        <th>Price</th>
+        <th>Status</th>
+        <th>Set Status</th>
+        <th>Delete Order</th>
+    </tr>
+    {% for order in comp_orders %}
+    <tr>
+        <td>{{order.ID}}</td>
+        <td>
+            <ul>
+                <li>Mains: 
+                    {% for i in order.mains %}
+                        {{ i }}
+                    {% endfor %}</li>
+                <li>Sides: {{order.sides}}</li>
+                <li>Drinks: {{order.drinks}}</li>
+            </ul>
+        </td>
+        <td>{{order.calculate_order_price(inventory)}}</td>
+        <td>{{order.status}}</td>
+        <td><form method="POST">
+            <input hidden name="id", value="{{ order.ID }}">
+            <!-- select drop down box -->
+            Set Status: <select name="order_status">
+                <option value="Collected">Collected</option>
+                <option value="Preparing">Preparing</option>
+                <option value="Ready for collection">Ready for Collection</option>
+            </select>
+            <button name='update_status' value='update'>Update Status</button></form>
+        </td>
+        <td>
+            <form method="post">
+            <input hidden name="id_del", value="{{ order.ID }}">
+            <button name='update_status' value='delete'>Delete Order</button>
+            </form>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+{% endif %}
+    {% if search != True %}
+    <form method="POST">
+    <button name='update_status' value='clear'>Clear List</button>
+    </form>
+    {% endif %}
+    {% if search == True %}
+    <button name='back'><a href="{{url_for('completedOrders')}}">Back</a></button>
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="60px" height="60px" viewBox="0 0 60 60" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.2.2 (9983) - http://www.bohemiancoding.com/sketch -->
+    <title>Plateau</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="stroked" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="Kitchen" sketch:type="MSLayerGroup" transform="translate(-607.000000, -478.000000)" stroke="#535353" stroke-width="2" stroke-linejoin="round">
+            <g id="Plateau" transform="translate(609.000000, 482.000000)" sketch:type="MSShapeGroup">
+                <path d="M51,46 C51,33.2974508 40.7025492,23 28,23 C15.2974508,23 5,33.2974508 5,46 L51,46 Z" id="Oval-666" stroke-linecap="round"></path>
+                <path d="M21.4330756,28.1654332 C16.9055947,29.8330598 13.1882125,33.175461 11.0322296,37.4413362" id="Oval-667" stroke-linecap="round"></path>
+                <circle id="Oval-666" stroke-linecap="round" cx="28.5" cy="19.5" r="3.5"></circle>
+                <path d="M0,50 L56,50" id="Line" stroke-linecap="square"></path>
+                <path d="M53,50 L53,54" id="Line" stroke-linecap="square"></path>
+                <path d="M3,50 L3,54" id="Line" stroke-linecap="square"></path>
+                <path d="M26.7633413,0 C26.7633413,0 21.9040421,1.59514114 25.0730777,6.06004011 C28.2421132,10.5249391 24.719664,12.0940917 24.719664,12.0940917" id="Path-1345" stroke-linecap="round"></path>
+                <path d="M33,1.41500255 C33,1.41500255 29.4830264,2.56950428 31.7766523,5.80102623 C34.0702782,9.03254817 31.5208651,10.1682404 31.5208651,10.1682404" id="Path-1344" stroke-linecap="round"></path>
+            </g>
+        </g>
+    </g>
+</svg>

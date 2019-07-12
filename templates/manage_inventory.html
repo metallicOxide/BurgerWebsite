@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block body %}
+<center>
+    <h2> Inventory Management </h2> <br> <br>
+
+    <a href="{{url_for('add_stock')}}">Add new stock type</a>
+
+    <u1>
+    {% if food_dict and food_list %}
+        {% for food in food_list %}
+            <li> <a href="{{url_for('ingredient_details', ingredient_name=food.name, quant=food_dict[food.name])}}">{{food.name}}</a>:
+                {{food_dict[food.name]}} {{food.quant_type}} </li>
+        {% endfor %}
+    {% else %}
+        There are no ingredients in the inventory
+    {% endif %}
+    </u1>
+</center>
+{% endblock %}
